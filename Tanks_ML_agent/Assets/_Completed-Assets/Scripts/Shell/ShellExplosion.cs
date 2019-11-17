@@ -12,7 +12,6 @@ namespace Complete
         public float m_MaxLifeTime = 2f;                    // The time in seconds before the shell is removed.
         public float m_ExplosionRadius = 5f;                // The maximum distance away from the explosion tanks can be and are still affected.
 
-
         private void Start ()
         {
             // If it isn't destroyed by then, destroy the shell after it's lifetime.
@@ -29,24 +28,24 @@ namespace Complete
             for (int i = 0; i < colliders.Length; i++)
             {
                 // ... and find their rigidbody.
-                Rigidbody targetRigidbody = colliders[i].GetComponent<Rigidbody> ();
+                /*Rigidbody targetRigidbody = colliders[i].GetComponent<Rigidbody> ();
 
                 // If they don't have a rigidbody, go on to the next collider.
                 if (!targetRigidbody)
-                    continue;
+                    continue;*/
 
                 // Add an explosion force.
-                targetRigidbody.AddExplosionForce (m_ExplosionForce, transform.position, m_ExplosionRadius);
+                /*targetRigidbody.AddExplosionForce (m_ExplosionForce, transform.position, m_ExplosionRadius);*/
 
                 // Find the TankHealth script associated with the rigidbody.
-                TankHealth targetHealth = targetRigidbody.GetComponent<TankHealth> ();
+                AbstractTankHealth targetHealth = colliders[i].gameObject.GetComponent<AbstractTankHealth> ();
 
                 // If there is no TankHealth script attached to the gameobject, go on to the next collider.
                 if (!targetHealth)
                     continue;
 
                 // Calculate the amount of damage the target should take based on it's distance from the shell.
-                float damage = CalculateDamage (targetRigidbody.position);
+                float damage = CalculateDamage (colliders[i].transform.position);
 
                 // Deal this damage to the tank.
                 targetHealth.TakeDamage (damage);
