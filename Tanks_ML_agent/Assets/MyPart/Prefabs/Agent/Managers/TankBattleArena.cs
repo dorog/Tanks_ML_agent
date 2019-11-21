@@ -1,5 +1,4 @@
 ﻿using MLAgents;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,10 +18,13 @@ public abstract class TankBattleArenaManager : MonoBehaviour
     protected virtual void StartNewRound()
     {
         tanks.Clear();
-        for (int i = 0; i < Places.Length; i++)
+        /*for (int i = 0; i < Places.Length; i++)
         {
             CreateTank(Places[i], Colors[i]);
-        }
+        }*/
+
+        int place = Random.Range(0, Places.Length);
+        CreateTank(Places[place], Colors[place]);
     }
 
     protected void CreateTank(Transform transform, Material material)
@@ -70,6 +72,15 @@ public abstract class TankBattleArenaManager : MonoBehaviour
     {
         List<float> data = new List<float>();
 
+        if (target == null)
+        {
+            data.Add(0);
+            data.Add(0);
+            data.Add(0);
+            data.Add(0);
+            data.Add(0);
+        }
+
         Vector3 vectorToTank = target.transform.position - tank.transform.position;
 
         float distance = vectorToTank.magnitude;
@@ -78,12 +89,8 @@ public abstract class TankBattleArenaManager : MonoBehaviour
         float angle = Vector3.SignedAngle(vectorToTank, tank.transform.forward, Vector3.up);
         data.Add(angle);
 
-        /*data.Add(target.transform.forward.x);
-        data.Add(target.transform.forward.z);*/
-
         TankMovement targetTankMovement = target.GetComponent<TankMovement>();
         Vector3 targetVelocity = targetTankMovement.GetVelocity();
-        //Debug.Log("Velocity: " + targetVelocity);
         data.Add(targetVelocity.x);
         data.Add(targetVelocity.z);
 
@@ -93,5 +100,31 @@ public abstract class TankBattleArenaManager : MonoBehaviour
         return data;
     }
 
-    public abstract List<float> GetTargetData(GameObject tank);
+    public List<float> GetDataForMove(GameObject tank, GameObject target)
+    {
+        List<float> data = new List<float>();
+
+        Vector3 vectorToTank = target.transform.position - tank.transform.position;
+
+        data.Add(GetDistance(tank, target));
+
+        float angle = Vector3.SignedAngle(vectorToTank, tank.transform.forward, Vector3.up);
+        data.Add(angle);
+
+        TankShooting tankShooting = target.GetComponent<TankShooting>();
+        float turretAngle = Vector3.SignedAngle(-vectorToTank, tankShooting.Turret.forward, Vector3.up);
+        data.Add(turretAngle);
+
+        return data;
+    }
+
+    public float GetDistance(GameObject tank, GameObject target)
+    {
+        Vector3 vectorToTank = target.transform.position - tank.transform.position;
+
+        float distance = vectorToTank.magnitude;
+
+        return distance;
+    }
+    //public abstract List<float> GetTargetData(GameObject tank);
 }

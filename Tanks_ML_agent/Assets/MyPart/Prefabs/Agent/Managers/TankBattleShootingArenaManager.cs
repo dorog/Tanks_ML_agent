@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TankBattleShootingArenaManager : TankBattleArenaManager
 {
@@ -10,11 +9,13 @@ public class TankBattleShootingArenaManager : TankBattleArenaManager
 
     private GameObject targetTank = null;
 
+    private TankShooterAgent agent;
+
     protected override void StartNewRound()
     {
         base.StartNewRound();
 
-        if(targetTank != null)
+        if (targetTank != null)
         {
             Destroy(targetTank);
         }
@@ -23,13 +24,16 @@ public class TankBattleShootingArenaManager : TankBattleArenaManager
 
     protected override GameObject InstantiateTank(Transform transform, Material material)
     {
-        GameObject AgentObj = Instantiate(shooterTank, Places[0]);
+        GameObject AgentObj = Instantiate(shooterTank, transform);
 
         TankShooterAgent tankShooterAgent = AgentObj.GetComponent<TankShooterAgent>();
         tankShooterAgent.battleArenaManager = this;
+        tankShooterAgent.target = targetTank;
 
         Destroyer destroyer = AgentObj.GetComponent<Destroyer>();
         destroyer.tankBattleArenaManager = this;
+
+        agent = tankShooterAgent;
 
         return AgentObj;
     }
@@ -46,21 +50,8 @@ public class TankBattleShootingArenaManager : TankBattleArenaManager
         practiseTankhealth.TankBattleShootingArenaManager = this;
 
         targetTank = practiseTank;
-    }
 
-    public override List<float> GetTargetData(GameObject tank)
-    {
-        List<float> targetData = new List<float>();
-
-        /*Debug.Log("----------------------");
-        foreach(float item in GetDataForShoot(tank, targetTank))
-        {
-            Debug.Log(item);
-        }
-        Debug.Log("----------------------");*/
-        targetData.AddRange(GetDataForShoot(tank, targetTank));
-
-        return targetData;
+        agent.target = targetTank;
     }
 
     public void TargetTankDied()

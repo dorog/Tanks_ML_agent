@@ -7,5 +7,7 @@ public class PractiseTankhealth : AbstractTankHealth
     protected override void LastWish()
     {
         TankBattleShootingArenaManager.TargetTankDied();
+
+        Destroy(gameObject);
     }
 }

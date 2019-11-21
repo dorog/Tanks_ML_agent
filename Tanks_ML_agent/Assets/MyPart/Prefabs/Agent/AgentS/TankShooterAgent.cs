@@ -1,5 +1,4 @@
 ﻿using MLAgents;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,30 +7,19 @@ public class TankShooterAgent : Agent
     public TankShooting tankShooting;
     public RayPerception3D turretRayPerception;
     public TankBattleArenaManager battleArenaManager;
+    public GameObject target;
     public Destroyer destroyer;
 
     public GameObject turret;
     public float range = 30f;
 
-    public bool ShowObservations = false;
-
     public static float bestReward = -10f;
 
     public override void CollectObservations()
     {
-        if (ShowObservations)
-        {
-            ShowObservations = false;
-           
-            Debug.Log(tankShooting.CanFire());
-            foreach (var item in battleArenaManager.GetTargetData(turret))
-            {
-                Debug.Log(item);
-            }
-        }
         AddVectorObs(tankShooting.CanFire());
 
-        AddVectorObs(battleArenaManager.GetTargetData(turret));
+        AddVectorObs(battleArenaManager.GetDataForShoot(turret, target));
     }
 
     public override void AgentAction(float[] vectorAction, string textAction)

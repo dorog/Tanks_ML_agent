@@ -24337,8 +24337,8 @@ MonoBehaviour:
     broadcastingBrains:
     - {fileID: 11400000, guid: 32b47e8b92489744881eca26f8be49b5, type: 2}
     m_BrainsToControl:
-    - {fileID: 11400000, guid: 17a6f742e7ff82d4e809f2729d2b71db, type: 2}
-    - {fileID: 11400000, guid: 8fc41a3bdcc8f2945be934291d80c247, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
     - {fileID: 11400000, guid: 97357f478b7fbf04f9373d78ecb9908e, type: 2}
     - {fileID: 11400000, guid: 32b47e8b92489744881eca26f8be49b5, type: 2}
   m_TrainingConfiguration:

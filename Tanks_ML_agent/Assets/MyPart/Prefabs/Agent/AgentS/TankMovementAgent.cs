@@ -1,25 +1,26 @@
 ﻿using MLAgents;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TankMovementAgent : Agent
 {
     public RayPerception3D movementRayPerception;
     public TankBattleArenaManager battleArenaManager;
+    public GameObject target;
     public TankMovement tankMovement;
-    public float range;
-    public LayerMask mask;
+    public float range = 32f;
 
     public Destroyer destroyer;
 
     public override void CollectObservations()
     {
-        AddVectorObs(battleArenaManager.GetDataForShoot(null, gameObject));
-
         float rayDistance = 20f;
         float[] rayAngles = { 90f };
         string[] detectableObjects = { "wall", "Agent" };
         AddVectorObs(movementRayPerception.Perceive(rayDistance, rayAngles, detectableObjects, 0f, 0f));
+
+        AddVectorObs(battleArenaManager.GetDataForMove(gameObject, target));
+        //AddVectorObs(tankMovement.tankMovementSettings.Speed);
+        //AddVectorObs(tankMovement.tankMovementSettings.TurnSpeed);
     }
 
     public override void AgentAction(float[] vectorAction, string textAction)
@@ -47,8 +48,8 @@ public class TankMovementAgent : Agent
 
     private void Reward()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, range, mask);
-        if (colliders.Length == 0)
+        float distance = battleArenaManager.GetDistance(gameObject, target);
+        if (distance > range)
         {
             AddReward(-.001f);
         }
@@ -61,5 +62,13 @@ public class TankMovementAgent : Agent
     public override void AgentOnDone()
     {
         destroyer.Done();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("wall"))
+        {
+            AddReward(-0.5f);
+        }
     }
 }

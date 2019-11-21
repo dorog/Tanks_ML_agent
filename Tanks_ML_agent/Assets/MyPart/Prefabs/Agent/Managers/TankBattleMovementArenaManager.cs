@@ -1,34 +1,28 @@
-﻿using System.Collections.Generic;
+﻿using MLAgents;
 using UnityEngine;
 
 public class TankBattleMovementArenaManager : TankBattleArenaManager
 {
-    public TankAgent TankPrefab;
+    public GameObject TankPrefab;
 
-    public GameObject TankWithTwoBrain;
-
-    public override List<float> GetTargetData(GameObject tank)
-    {
-        throw new System.NotImplementedException();
-    }
+    public GameObject ShootingTank;
 
     protected override GameObject InstantiateTank(Transform transform, Material material)
     {
-        GameObject AgentObj = Instantiate(TankWithTwoBrain, transform);
-
-        tanks.Add(AgentObj);
+        GameObject AgentObj = Instantiate(TankPrefab, transform);
 
         TankMovementAgent tankMovementAgent = AgentObj.GetComponent<TankMovementAgent>();
         tankMovementAgent.battleArenaManager = this;
-
-        TankShooterAgent tankShooterAgent = AgentObj.GetComponent<TankShooterAgent>();
-        tankShooterAgent.battleArenaManager = this;
+        tankMovementAgent.target = ShootingTank;
 
         Destroyer destroyer = AgentObj.GetComponent<Destroyer>();
         destroyer.tankBattleArenaManager = this;
 
-        ColorSetter colorSetter = AgentObj.GetComponent<ColorSetter>();
-        colorSetter.SetColor(material);
+        AgentTankHealth agentTankHealth = AgentObj.GetComponent<AgentTankHealth>();
+        agentTankHealth.tankBattleArenaManager = this;
+
+        TankShooterAgent tankShooterAgent = ShootingTank.GetComponent<TankShooterAgent>();
+        tankShooterAgent.target = AgentObj;
 
         return AgentObj;
     }

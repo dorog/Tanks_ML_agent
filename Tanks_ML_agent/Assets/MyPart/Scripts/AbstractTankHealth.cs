@@ -25,10 +25,17 @@ public abstract class AbstractTankHealth : MonoBehaviour
 
         SetHealthUI();
 
+        Extra();
+
         if (m_CurrentHealth <= 0f)
         {
             OnDeath();
         }
+    }
+
+    protected virtual void Extra()
+    {
+
     }
 
     private void SetHealthUI()
@@ -53,7 +60,7 @@ public abstract class AbstractTankHealth : MonoBehaviour
 
         LastWish();
 
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
     protected abstract void LastWish();

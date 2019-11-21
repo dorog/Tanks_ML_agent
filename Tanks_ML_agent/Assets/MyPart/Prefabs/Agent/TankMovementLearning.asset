@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: TankMovementLearning
   m_EditorClassIdentifier: 
   brainParameters:
-    vectorObservationSize: 6
-    numStackedVectorObservations: 10
+    vectorObservationSize: 7
+    numStackedVectorObservations: 4
     vectorActionSize: 02000000
     cameraResolutions: []
     vectorActionDescriptions:

@@ -10,17 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b23992c8eb17439887f5e944bf04a40, type: 3}
-  m_Name: TankLearningBrain
+  m_Name: TankMovementLearningTest
   m_EditorClassIdentifier: 
   brainParameters:
-    vectorObservationSize: 13
+    vectorObservationSize: 8
     numStackedVectorObservations: 10
-    vectorActionSize: 030000000300000004000000
+    vectorActionSize: 0300000003000000
     cameraResolutions: []
     vectorActionDescriptions:
-    - 
-    - 
-    - 
+    - Movement
+    - Rotation
     vectorActionSpaceType: 0
-  model: {fileID: 5022602860645237092, guid: 5ea79a91554cbe34c82cb37d226dc700, type: 3}
+  model: {fileID: 5022602860645237092, guid: c9cc2f4c6e153ff4db54f2bc115f9248, type: 3}
   inferenceDevice: 0

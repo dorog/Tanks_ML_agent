@@ -25,6 +25,7 @@ public class AgentShellExplosion : MonoBehaviour
         // Collect all the colliders in a sphere from the shell's current position to a radius of the explosion radius.
         Collider[] colliders = Physics.OverlapSphere(transform.position, m_ExplosionRadius, m_TankMask);
 
+        int db = 0;
         // Go through all the colliders...
         for (int i = 0; i < colliders.Length; i++)
         {
@@ -43,7 +44,10 @@ public class AgentShellExplosion : MonoBehaviour
 
             // If there is no TankHealth script attached to the gameobject, go on to the next collider.
             if (!targetHealth)
+            {
+                db++;
                 continue;
+            }
 
             // Calculate the amount of damage the target should take based on it's distance from the shell.
             float damage = CalculateDamage(targetRigidbody.position);
@@ -65,6 +69,11 @@ public class AgentShellExplosion : MonoBehaviour
                 shoter.AddReward(1);
             }*/
             shoter.AddReward(1f);
+        }
+
+        if (db == colliders.Length)
+        {
+            shoter.AddReward(-0.1f);
         }
 
         // Unparent the particles from the shell.
