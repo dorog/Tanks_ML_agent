@@ -17,18 +17,8 @@ public class TankShooting : MonoBehaviour
     private float m_TurnInputValue;             // The current value of the turn input.
     private float Angle;
 
-    private bool canFire = true;
+    public bool canFire = true;
     public Transform Turret;
-
-    public bool FireManual = false;
-
-    private void Update()
-    {
-        if (FireManual)
-        {
-            Fire();
-        }
-    }
 
     private void FixedUpdate()
     {

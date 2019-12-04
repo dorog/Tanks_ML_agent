@@ -26,9 +26,10 @@ public class TankBattleShootingArenaManager : TankBattleArenaManager
     {
         GameObject AgentObj = Instantiate(shooterTank, transform);
 
-        TankShooterAgent tankShooterAgent = AgentObj.GetComponent<TankShooterAgent>();
+        TankShooterAgent tankShooterAgent = AgentObj.GetComponentInChildren<TankShooterAgent>();
         tankShooterAgent.battleArenaManager = this;
         tankShooterAgent.target = targetTank;
+        tankShooterAgent.search = "Red";
 
         Destroyer destroyer = AgentObj.GetComponent<Destroyer>();
         destroyer.tankBattleArenaManager = this;
@@ -58,6 +59,8 @@ public class TankBattleShootingArenaManager : TankBattleArenaManager
     {
         targetTank = null;
 
-        CreatePractiseTank();
+        //CreatePractiseTank();
+        agent.AddReward(1f);
+        agent.Done();
     }
 }

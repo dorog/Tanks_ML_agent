@@ -35,18 +35,18 @@ public class AgentShellExplosion : MonoBehaviour
         for (int i = 0; i < colliders.Length; i++)
         {
             // ... and find their rigidbody.
-            Rigidbody targetRigidbody = colliders[i].GetComponent<Rigidbody>();
+            /*Rigidbody targetRigidbody = colliders[i].GetComponent<Rigidbody>();
 
             // If they don't have a rigidbody, go on to the next collider.
             if (!targetRigidbody)
-                continue;
+                continue;*/
 
             // Add an explosion force.
             //targetRigidbody.AddExplosionForce(m_ExplosionForce, transform.position, m_ExplosionRadius);
 
             // Find the TankHealth script associated with the rigidbody.
-            AbstractTankHealth targetHealth = targetRigidbody.GetComponent<AbstractTankHealth>();
-            
+            AbstractTankHealth targetHealth = colliders[i].gameObject.GetComponent<AbstractTankHealth>();
+
             // If there is no TankHealth script attached to the gameobject, go on to the next collider.
             if (!targetHealth)
             {
@@ -55,25 +55,31 @@ public class AgentShellExplosion : MonoBehaviour
             }
 
             // Calculate the amount of damage the target should take based on it's distance from the shell.
-            float damage = CalculateDamage(targetRigidbody.position);
+            float damage = CalculateDamage(colliders[i].gameObject.transform.position);
 
             // wont work with players
             targetHealth.TakeDamage(damage);
 
-            Agent agent = targetRigidbody.GetComponent<Agent>();
+            Agent agent = colliders[i].gameObject.GetComponent<Agent>();
 
-            if (!agent)
-                continue;
-            if(agent == shoter)
+            if (agent)
             {
-                shoter.AddReward(-0.5f);
+                if (agent == shoter)
+                {
+                    shoter.AddReward(-0.5f);
+                }
+                else
+                {
+                    //agent.AddReward(-0.1f);
+                    shoter.AddReward(damage / 100f);
+                }
             }
             else
             {
-                //agent.AddReward(-0.1f);
-                shoter.AddReward(1);
+                shoter.AddReward(damage / 100f);
             }
-            //shoter.AddReward(1f);
+
+            //
         }
 
         if (db == colliders.Length)

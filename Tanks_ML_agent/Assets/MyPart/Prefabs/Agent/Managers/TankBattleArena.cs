@@ -37,7 +37,7 @@ public abstract class TankBattleArenaManager : MonoBehaviour
         return tanks;
     }
 
-    public void Done(GameObject gameObject)
+    public virtual void Done(GameObject gameObject)
     {
         RemoveTank(gameObject);
         if (tanks.Count == 1)
@@ -58,6 +58,7 @@ public abstract class TankBattleArenaManager : MonoBehaviour
 
     protected void MakeTankDone(GameObject gameObject)
     {
+        Debug.Log(gameObject.name);
         Agent[] agents = gameObject.GetComponents<Agent>();
         for (int i = 0; i < agents.Length; i++)
         {

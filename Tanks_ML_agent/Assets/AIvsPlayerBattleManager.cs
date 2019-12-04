@@ -14,15 +14,60 @@ public class AIvsPlayerBattleManager : TankBattleArenaManager
 
     private GameObject player;
 
+    public TanksUImanager uiManager;
+
+    public Transform[] defaultCameraTransforms;
+
+    private bool roundEnd = false;
+    private bool playerLose = false;
+
+    private void Start(){}
+
+    private void OnEnable()
+    {
+        StartNewRound();
+    }
+
+    public void StartRound()
+    {
+        StartNewRound();
+    }
+
     protected override void StartNewRound()
     {
+        roundEnd = false;
         if(player != null)
         {
             Destroy(player);
         }
+        if (playerLose)
+        {
+            Destroy(tanks[0]);
+            playerLose = false;
+        }
 
         supportManager.ResetMap();
         base.StartNewRound();
+
+        uiManager.Count(3);
+    }
+
+    public void StartBattle()
+    {
+        Transform[] transforms = new Transform[tanks.Count];
+        for (int i = 0; i < tanks.Count; i++)
+        {
+            TankShooting tankShooting = tanks[i].GetComponent<TankShooting>();
+            TankMovement tankMovement = tanks[i].GetComponent<TankMovement>();
+
+            tankShooting.enabled = true;
+            tankShooting.canFire = true;
+            tankMovement.enabled = true;
+
+            transforms[i] = tanks[i].transform;
+        }
+
+        cameraControl.m_Targets = transforms;
     }
 
     public override void TargetTankDied()
@@ -45,11 +90,9 @@ public class AIvsPlayerBattleManager : TankBattleArenaManager
         GameObject redTank = Instantiate(aiTank, positions[range]);
         redTank.tag = "RedTank";
 
-        SetAttributes(redTank, spawn2Mat, "Blue", redTank);
+        SetAttributes(redTank, spawn2Mat, "Blue", player);
 
         tanks.Add(redTank);
-
-        SetCameraTargets(player.transform, redTank.transform);
         return player;
     }
 
@@ -72,16 +115,35 @@ public class AIvsPlayerBattleManager : TankBattleArenaManager
         colorSetter.SetColor(mat);
     }
 
-    private void SetCameraTargets(Transform player, Transform ai)
+    public override void Done(GameObject gameObject)
     {
-        // Create a collection of transforms the same size as the number of tanks.
-        Transform[] targets = new Transform[2];
+        if (!roundEnd)
+        {
+            roundEnd = true;
+            cameraControl.m_Targets = defaultCameraTransforms;
 
-        targets[0] = ai;
-        targets[1] = player;
+            if (gameObject == player)
+            {
+                playerLose = true;
+                player = null;
 
+                DisableAi();
 
-        // These are the targets the camera should follow.
-        cameraControl.m_Targets = targets;
+                RemoveTank(gameObject);
+                uiManager.PlayerLose();
+            }
+            else
+            {
+                uiManager.PlayerWin();
+            }
+        }
+    }
+
+    private void DisableAi()
+    {
+        TankMovementAgent tankMovementAgent = tanks[0].GetComponent<TankMovementAgent>();
+        tankMovementAgent.enabled = false;
+        TankShooterAgent tankShooterAgent = tanks[0].GetComponentInChildren<TankShooterAgent>();
+        tankShooterAgent.enabled = false;
     }
 }

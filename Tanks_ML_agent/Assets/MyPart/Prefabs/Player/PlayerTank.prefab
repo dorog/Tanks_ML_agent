@@ -10436,7 +10436,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1656901094941633129}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 184d72ea2424d1443bca885930fe844a, type: 3}
   m_Name: 
@@ -10449,6 +10449,7 @@ MonoBehaviour:
   m_ChargingClip: {fileID: 8300000, guid: c17f124fcdc0f5446a72f793898bd74b, type: 3}
   m_FireClip: {fileID: 8300000, guid: 672a9941361ad494a99fba36759eca80, type: 3}
   tankTurretData: {fileID: 11400000, guid: 0ba31c5a09e698a41a0a62ca531a0226, type: 2}
+  canFire: 0
   Turret: {fileID: 1656901094941819771}
   FireManual: 0
 --- !u!114 &1656901094931928067
@@ -10458,7 +10459,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1656901094941633129}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6e4cc0827b572b5408b2cd8eb8b456b4, type: 3}
   m_Name: 

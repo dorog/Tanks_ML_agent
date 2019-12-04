@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿
 public class PlayerTankHealth : AbstractTankHealth
 {
     public AIvsPlayerBattleManager aiVSplayerBattleManager;
@@ -9,5 +6,6 @@ public class PlayerTankHealth : AbstractTankHealth
     protected override void LastWish()
     {
         aiVSplayerBattleManager.Done(gameObject);
+        Destroy(gameObject);
     }
 }
