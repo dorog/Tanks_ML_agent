@@ -9,24 +9,48 @@ public class TankShooterAgent : Agent
     public TankBattleArenaManager battleArenaManager;
     public GameObject target;
     public Destroyer destroyer;
+    public string search = "Tank";
 
     public GameObject turret;
     public float range = 30f;
-
-    public static float bestReward = -10f;
 
     public override void CollectObservations()
     {
         AddVectorObs(tankShooting.CanFire());
 
         AddVectorObs(battleArenaManager.GetDataForShoot(turret, target));
+
+        string[] detectable = { search + "Tank", "Environment" };
+        AddVectorObs(turretRayPerception.Perceive(range, new float[] { 90f }, detectable));
     }
 
     public override void AgentAction(float[] vectorAction, string textAction)
     {
         RotateTurret(vectorAction[0]);
-        Fire(vectorAction[1]);
+        
+        Reward(Fire(vectorAction[1]));
+    }
+
+    private void Reward(bool fire)
+    {
         AddReward(-.001f);
+        /*string[] detectable = { search };
+        List<float> results = turretRayPerception.Perceive(range, new float[] { 90f }, detectable);*/
+
+        /*if(results[0] == 1)
+        {
+            if (!fire)
+            {
+                AddReward(-.001f);
+            }
+        }
+        else
+        {
+            if (fire)
+            {
+                AddReward(-.001f);
+            }
+        }*/
     }
 
     private void RotateTurret(float amount)
@@ -35,38 +59,31 @@ public class TankShooterAgent : Agent
         tankShooting.AddTurn(rotation);
     }
 
-    private void Fire(float chance)
+    private bool Fire(float chance)
     {
         float fire = Mathf.Clamp(chance, -1, 1);
         if (fire > 0)
         {
             tankShooting.Fire(true, this);
-
-            /*if (Hit())
-            {
-                AddReward(1f);
-            }*/
+            return true;
         }
-    }
 
-    private bool Hit()
-    {
-        float rayDistance = range;
-        float[] rayAngles = { 90f };
-        string[] detectableObjects = { "Tank" };
-
-        List<float> result = turretRayPerception.Perceive(rayDistance, rayAngles, detectableObjects, 0f, 0f);
-
-        return result[0] == 0 ? false : true;
+        return false;
     }
 
     public override void AgentOnDone()
     {
         destroyer.Done();
-        /*if(bestReward < GetCumulativeReward())
+    }
+
+    public override float[] Heuristic()
+    {
+        float rotate = Input.GetAxis("Horizontal");
+        if(Input.GetKeyDown(KeyCode.Space))
         {
-            bestReward = GetCumulativeReward();
-            Debug.Log(bestReward + " " + DateTime.Now);
-        }*/
+            return new float[] { rotate, 1f };
+        }
+
+        return new float[] { rotate, -1f };
     }
 }

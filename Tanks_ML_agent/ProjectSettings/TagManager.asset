@@ -8,6 +8,28 @@ TagManager:
   - ground
   - Agent
   - Tank
+  - agent
+  - goal
+  - pit
+  - TankView
+  - symbol_X_Goal
+  - symbol_O_Goal
+  - symbol_O
+  - symbol_X
+  - switchOff
+  - pyramid
+  - block
+  - stone
+  - switchOn
+  - Environment
+  - RedTank
+  - BlueTank
+  - Good
+  - Bad
+  - RedLocation
+  - BlueLocation
+  - Both
+  - Used
   layers:
   - Default
   - TransparentFX
@@ -19,8 +41,8 @@ TagManager:
   - 
   - Tank
   - ShootingPractiseTank
-  - 
-  - 
+  - TankView
+  - Environment
   - 
   - 
   - 

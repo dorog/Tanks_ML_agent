@@ -2,11 +2,11 @@
 
 public class PractiseTankhealth : AbstractTankHealth
 {
-    public TankBattleShootingArenaManager TankBattleShootingArenaManager;
+    public TankBattleArenaManager battleArenaManager;
 
     protected override void LastWish()
     {
-        TankBattleShootingArenaManager.TargetTankDied();
+        battleArenaManager.TargetTankDied();
 
         Destroy(gameObject);
     }

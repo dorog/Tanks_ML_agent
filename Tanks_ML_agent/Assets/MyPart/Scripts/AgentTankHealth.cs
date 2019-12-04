@@ -1,22 +1,18 @@
-﻿using MLAgents;
-using UnityEngine;
-
+﻿
 public class AgentTankHealth : AbstractTankHealth
 {
-    public Destroyer destroyer;
-    public TankMovementAgent agent;
-    public TankBattleArenaManager tankBattleArenaManager;
+    public TankMovementAgent movementAgent;
+    public TankShooterAgent shoterAgent;
 
     protected override void LastWish()
     {
-        agent.Done();
-        //tankBattleArenaManager.Done(gameObject);
-        //destroyer.Done();
+        movementAgent.Done();
+        shoterAgent.Done();
     }
 
     protected override void Extra()
     {
         base.Extra();
-        agent.AddReward(-1f);
+        movementAgent.SetReward(-1f);
     }
 }

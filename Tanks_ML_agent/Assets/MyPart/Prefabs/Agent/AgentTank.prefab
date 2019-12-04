@@ -5174,6 +5174,7 @@ GameObject:
   - component: {fileID: 5134416019214415987}
   - component: {fileID: 4267070732317611847}
   - component: {fileID: 4180215748824446508}
+  - component: {fileID: 6535292127737063918}
   m_Layer: 9
   m_Name: AgentTank
   m_TagString: Agent
@@ -5257,12 +5258,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PlayerNumber: 1
-  m_Speed: 12
-  m_TurnSpeed: 180
   m_MovementAudio: {fileID: 5134416019214415987}
-  m_EngineIdling: {fileID: 8300000, guid: 4932ab25b84dd7649b80af68a9660ddc, type: 3}
-  m_EngineDriving: {fileID: 8300000, guid: d7ca9fb5aa30155449192b23d7fb3336, type: 3}
-  m_PitchRange: 0.1
+  tankMovementSettings: {fileID: 0}
 --- !u!114 &1544068088628781022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5300,12 +5297,9 @@ MonoBehaviour:
   m_ShootingAudio: {fileID: 5134416019214415987}
   m_ChargingClip: {fileID: 8300000, guid: c17f124fcdc0f5446a72f793898bd74b, type: 3}
   m_FireClip: {fileID: 8300000, guid: 672a9941361ad494a99fba36759eca80, type: 3}
-  m_MinLaunchForce: 15
-  m_MaxLaunchForce: 50
-  m_MaxChargeTime: 0.75
-  m_TurnSpeed: 180
-  reloadTime: 2
+  tankTurretData: {fileID: 0}
   Turret: {fileID: 1544068088617862284}
+  FireManual: 0
 --- !u!82 &5134416019214415987
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5414,10 +5408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00a9ce11f4021fd4f99ddd8fdc1bbf5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brain: {fileID: 11400000, guid: 8fc41a3bdcc8f2945be934291d80c247, type: 2}
   agentParameters:
-    agentCameras: []
-    agentRenderTextures: []
     maxStep: 5000
     resetOnDone: 0
     onDemandDecision: 0
@@ -5441,6 +5432,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb172294dbbcc408286b156a2c4b553c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6535292127737063918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544068088617545118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BrainParameters:
+    vectorObservationSize: 1
+    numStackedVectorObservations: 1
+    vectorActionSize: 01000000
+    vectorActionDescriptions: []
+    vectorActionSpaceType: 0
+  m_Model: {fileID: 0}
+  m_InferenceDevice: 0
+  m_UseHeuristic: 0
+  m_BehaviorName: My Behavior
 --- !u!1 &1544068088617545550
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,6 +22,11 @@ public class AgentShellExplosion : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if(other.gameObject.tag == "Good" || other.gameObject.tag == "Bad" || other.gameObject.tag == "RedLocation" || other.gameObject.tag == "BlueLocation")
+        {
+            return;
+        }
+
         // Collect all the colliders in a sphere from the shell's current position to a radius of the explosion radius.
         Collider[] colliders = Physics.OverlapSphere(transform.position, m_ExplosionRadius, m_TankMask);
 
@@ -41,7 +46,7 @@ public class AgentShellExplosion : MonoBehaviour
 
             // Find the TankHealth script associated with the rigidbody.
             AbstractTankHealth targetHealth = targetRigidbody.GetComponent<AbstractTankHealth>();
-
+            
             // If there is no TankHealth script attached to the gameobject, go on to the next collider.
             if (!targetHealth)
             {
@@ -55,20 +60,20 @@ public class AgentShellExplosion : MonoBehaviour
             // wont work with players
             targetHealth.TakeDamage(damage);
 
-            /*TankShooterAgent agent = targetRigidbody.GetComponent<TankShooterAgent>();
+            Agent agent = targetRigidbody.GetComponent<Agent>();
 
             if (!agent)
                 continue;
-            /*if(agent == shoter)
+            if(agent == shoter)
             {
-                shoter.AddReward(-0.1f);
+                shoter.AddReward(-0.5f);
             }
             else
             {
-                agent.AddReward(-0.1f);
+                //agent.AddReward(-0.1f);
                 shoter.AddReward(1);
-            }*/
-            shoter.AddReward(1f);
+            }
+            //shoter.AddReward(1f);
         }
 
         if (db == colliders.Length)

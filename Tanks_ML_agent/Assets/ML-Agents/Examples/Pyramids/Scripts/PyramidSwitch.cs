@@ -31,7 +31,7 @@ public class PyramidSwitch : MonoBehaviour
         myButton.GetComponent<Renderer>().material = offMaterial;
     }
 
-    private void OnCollisionEnter(Collision other)
+    /*private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("agent") && m_State == false)
         {
@@ -40,5 +40,5 @@ public class PyramidSwitch : MonoBehaviour
             m_AreaComponent.CreatePyramid(1, m_PyramidIndex);
             tag = "switchOn";
         }
-    }
+    }*/
 }

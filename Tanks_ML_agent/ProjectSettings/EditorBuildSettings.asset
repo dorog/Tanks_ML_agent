@@ -8,7 +8,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/MyPart/TankBattleArena.unity
     guid: b3a5e32330fdcd845a3193cdeddb26c6
-  - enabled: 1
+  - enabled: 0
     path: Assets/MyPart/TankShootingArena.unity
     guid: f17a684994c949d4580d15c49272fdd3
+  - enabled: 0
+    path: Assets/MyPart/PictureLearn.unity
+    guid: 5d33c760279f6124a82107b2cd2612d0
+  - enabled: 1
+    path: Assets/MyPart/TankMovingArena.unity
+    guid: d4c24763aff88af448755fae09a96550
   m_configObjects: {}

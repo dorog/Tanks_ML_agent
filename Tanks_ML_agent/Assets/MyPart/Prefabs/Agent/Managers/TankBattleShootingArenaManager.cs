@@ -47,14 +47,14 @@ public class TankBattleShootingArenaManager : TankBattleArenaManager
         practiseTankController.amount = Random.Range(10f, 15f);
 
         PractiseTankhealth practiseTankhealth = practiseTank.GetComponent<PractiseTankhealth>();
-        practiseTankhealth.TankBattleShootingArenaManager = this;
+        practiseTankhealth.battleArenaManager = this;
 
         targetTank = practiseTank;
 
         agent.target = targetTank;
     }
 
-    public void TargetTankDied()
+    public override void TargetTankDied()
     {
         targetTank = null;
 

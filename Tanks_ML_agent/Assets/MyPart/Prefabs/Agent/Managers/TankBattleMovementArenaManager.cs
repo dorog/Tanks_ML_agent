@@ -1,29 +1,61 @@
-﻿using MLAgents;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TankBattleMovementArenaManager : TankBattleArenaManager
 {
     public GameObject TankPrefab;
-
     public GameObject ShootingTank;
+    public Transform[] positions;
+
+    public Material spawn2Mat;
+
+    private GameObject redTank;
+    private GameObject blueTank;
+
+    public SupportManager supportManager;
+
+    protected override void StartNewRound()
+    {
+        supportManager.ResetMap();
+        base.StartNewRound();
+    }
 
     protected override GameObject InstantiateTank(Transform transform, Material material)
     {
-        GameObject AgentObj = Instantiate(TankPrefab, transform);
+        blueTank = Instantiate(TankPrefab, transform);
+        blueTank.tag = "BlueTank";
 
-        TankMovementAgent tankMovementAgent = AgentObj.GetComponent<TankMovementAgent>();
+        int range = Random.Range(0, positions.Length);
+        redTank = Instantiate(TankPrefab, positions[range]);
+        redTank.tag = "RedTank";
+
+        SetAttributes(blueTank, material, "Red", redTank);
+        SetAttributes(redTank, spawn2Mat, "Blue", blueTank);
+
+        tanks.Add(redTank);
+        return blueTank;
+    }
+
+    private void SetAttributes(GameObject tank, Material mat, string tag, GameObject enemy)
+    {
+        TankMovementAgent tankMovementAgent = tank.GetComponent<TankMovementAgent>();
         tankMovementAgent.battleArenaManager = this;
-        tankMovementAgent.target = ShootingTank;
+        tankMovementAgent.target = enemy;
+        tankMovementAgent.Search = tag;
 
-        Destroyer destroyer = AgentObj.GetComponent<Destroyer>();
+        TankShooterAgent tankShooterAgent = tank.GetComponentInChildren<TankShooterAgent>();
+        tankShooterAgent.battleArenaManager = this;
+        tankShooterAgent.target = enemy;
+        tankShooterAgent.search = tag;
+
+        Destroyer destroyer = tank.GetComponent<Destroyer>();
         destroyer.tankBattleArenaManager = this;
 
-        AgentTankHealth agentTankHealth = AgentObj.GetComponent<AgentTankHealth>();
-        agentTankHealth.tankBattleArenaManager = this;
+        ColorSetter colorSetter = tank.GetComponent<ColorSetter>();
+        colorSetter.SetColor(mat);
+    }
 
-        TankShooterAgent tankShooterAgent = ShootingTank.GetComponent<TankShooterAgent>();
-        tankShooterAgent.target = AgentObj;
-
-        return AgentObj;
+    public override void TargetTankDied()
+    {
+        //Done(target);
     }
 }
