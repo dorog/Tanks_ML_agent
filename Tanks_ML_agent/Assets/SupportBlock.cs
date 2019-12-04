@@ -19,14 +19,13 @@ public class SupportBlock : MonoBehaviour
         {
             TankMovementAgent tankMovementAgent = other.gameObject.GetComponent<TankMovementAgent>();
 
-            if (gameObject.tag == bad)
+            if (tankMovementAgent)
             {
-                tankMovementAgent.EnteredBad();
+                if (gameObject.tag == bad)
+                {
+                    tankMovementAgent.EnteredBad();
+                }
             }
-            /*else
-            {
-                tankMovementAgent.EnteredGood();
-            }*/
 
             supportManager.UpdateBlocks(this, other.gameObject.tag == "RedTank" ? true : false);
         }
@@ -37,16 +36,13 @@ public class SupportBlock : MonoBehaviour
         if (other.gameObject.tag == "RedTank" || other.gameObject.tag == "BlueTank")
         {
             TankMovementAgent tankMovementAgent = other.gameObject.GetComponent<TankMovementAgent>();
-
+            if (!tankMovementAgent)
+                return;
 
             if (gameObject.tag == bad)
             {
                 tankMovementAgent.ExitBad();
             }
-            /*else
-            {
-                tankMovementAgent.ExitGood();
-            }*/
         }
     }
 

@@ -9878,7 +9878,7 @@ GameObject:
   - component: {fileID: 1227177269}
   - component: {fileID: 1964599460}
   m_Layer: 8
-  m_Name: AgentTankWithMovementBrain
+  m_Name: AI_V1
   m_TagString: Agent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10108,7 +10108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agentParameters:
-    maxStep: 2000
+    maxStep: 0
     resetOnDone: 0
     onDemandDecision: 0
     numberOfActionsBetweenDecisions: 1
@@ -10163,7 +10163,7 @@ MonoBehaviour:
     vectorActionSize: 05000000
     vectorActionDescriptions: []
     vectorActionSpaceType: 0
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: 8823945a45b67c64ba146262941a6979, type: 3}
   m_InferenceDevice: 1
   m_UseHeuristic: 0
   m_BehaviorName: TankMovement
@@ -10780,7 +10780,7 @@ MonoBehaviour:
     vectorActionSize: 02000000
     vectorActionDescriptions: []
     vectorActionSpaceType: 1
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: be181d8a445dec34d8d1aaf20d6187f1, type: 3}
   m_InferenceDevice: 1
   m_UseHeuristic: 0
   m_BehaviorName: TankShooting
@@ -10797,7 +10797,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agentParameters:
-    maxStep: 2000
+    maxStep: 0
     resetOnDone: 0
     onDemandDecision: 0
     numberOfActionsBetweenDecisions: 1

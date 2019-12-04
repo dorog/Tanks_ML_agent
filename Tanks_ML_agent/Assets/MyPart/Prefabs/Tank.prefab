@@ -9939,12 +9939,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PlayerNumber: 1
-  m_Speed: 12
-  m_TurnSpeed: 180
   m_MovementAudio: {fileID: 1729571058804031471}
-  m_EngineIdling: {fileID: 8300000, guid: 4932ab25b84dd7649b80af68a9660ddc, type: 3}
-  m_EngineDriving: {fileID: 8300000, guid: d7ca9fb5aa30155449192b23d7fb3336, type: 3}
-  m_PitchRange: 0.1
+  tankMovementSettings: {fileID: 11400000, guid: 06b7a4d1b0023c143836d2a72ddd5e38,
+    type: 2}
 --- !u!114 &5344671196223559746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9982,9 +9979,9 @@ MonoBehaviour:
   m_ShootingAudio: {fileID: 0}
   m_ChargingClip: {fileID: 8300000, guid: c17f124fcdc0f5446a72f793898bd74b, type: 3}
   m_FireClip: {fileID: 8300000, guid: 672a9941361ad494a99fba36759eca80, type: 3}
-  m_MinLaunchForce: 15
-  m_MaxLaunchForce: 50
-  m_MaxChargeTime: 0.75
+  tankTurretData: {fileID: 0}
+  Turret: {fileID: 0}
+  FireManual: 0
 --- !u!114 &3079614946991422245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9997,9 +9994,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dfb4b21cccd1ad45925052c691ee6cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PlayerNumber: 1
-  m_TurnSpeed: 180
   Turret: {fileID: 5344671196229354256}
+  tankShooting: {fileID: 5344671196223603126}
 --- !u!82 &1729571058804031471
 AudioSource:
   m_ObjectHideFlags: 0

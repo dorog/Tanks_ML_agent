@@ -10276,9 +10276,10 @@ GameObject:
   - component: {fileID: 1656901094935249781}
   - component: {fileID: 1656901094931841501}
   - component: {fileID: 1656901094931928067}
-  - component: {fileID: 1656901094931896361}
   - component: {fileID: 4365572509198749815}
   - component: {fileID: 6387812733271168451}
+  - component: {fileID: 5811509453280623001}
+  - component: {fileID: 43563407718457881}
   m_Layer: 9
   m_Name: PlayerTank
   m_TagString: Untagged
@@ -10294,7 +10295,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1656901094941633129}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.82, y: 0.5, z: -33.25}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1656901094941804003}
@@ -10466,24 +10467,6 @@ MonoBehaviour:
   m_MovementAudio: {fileID: 4959240888166039428}
   tankMovementSettings: {fileID: 11400000, guid: 06b7a4d1b0023c143836d2a72ddd5e38,
     type: 2}
---- !u!114 &1656901094931896361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1656901094941633129}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 030896d0325fa3e4d8d7d4cfe2351cb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_StartingHealth: 100
-  m_Slider: {fileID: 1656901094931839413}
-  m_FillImage: {fileID: 1656901094931893033}
-  m_FullHealthColor: {r: 0, g: 1, b: 0, a: 1}
-  m_ZeroHealthColor: {r: 1, g: 0, b: 0, a: 1}
-  m_ExplosionPrefab: {fileID: 151086, guid: 6bc6d0dd8b8428e4ca316513f2cf13c6, type: 3}
 --- !u!114 &4365572509198749815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10511,6 +10494,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Turret: {fileID: 1656901094941819771}
   tankShooting: {fileID: 1656901094931841501}
+--- !u!114 &5811509453280623001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656901094941633129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4ab28769444bbe42bb888c8cdebb61c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderers:
+  - {fileID: 1656901094939629531}
+  - {fileID: 1656901094939629869}
+  - {fileID: 1656901094939447175}
+  - {fileID: 1656901094939471965}
+--- !u!114 &43563407718457881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656901094941633129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cea454a73069f90478cb0bbb9cc923fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StartingHealth: 100
+  m_Slider: {fileID: 1656901094931839413}
+  m_FillImage: {fileID: 1656901094931893033}
+  m_FullHealthColor: {r: 0, g: 1, b: 0, a: 1}
+  m_ZeroHealthColor: {r: 1, g: 0, b: 0, a: 1}
+  m_ExplosionPrefab: {fileID: 151086, guid: 6bc6d0dd8b8428e4ca316513f2cf13c6, type: 3}
+  aiVSplayerBattleManager: {fileID: 0}
 --- !u!1 &1656901094941636543
 GameObject:
   m_ObjectHideFlags: 0
