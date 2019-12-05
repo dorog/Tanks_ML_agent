@@ -94,7 +94,7 @@ public class AgentShellExplosion : MonoBehaviour
         m_ExplosionParticles.Play();
 
         // Play the explosion sound effect.
-        //m_ExplosionAudio.Play();
+        m_ExplosionAudio.Play();
 
         // Once the particles have finished, destroy the gameobject they are on.
         ParticleSystem.MainModule mainModule = m_ExplosionParticles.main;

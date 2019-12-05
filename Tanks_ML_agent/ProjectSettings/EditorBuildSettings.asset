@@ -14,7 +14,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/MyPart/PictureLearn.unity
     guid: 5d33c760279f6124a82107b2cd2612d0
-  - enabled: 1
+  - enabled: 0
     path: Assets/MyPart/TankMovingArena.unity
     guid: d4c24763aff88af448755fae09a96550
+  - enabled: 1
+    path: Assets/MyGame/Game.unity
+    guid: 6c04e0375c2ef3c4dbe14b08aa45c4a3
   m_configObjects: {}

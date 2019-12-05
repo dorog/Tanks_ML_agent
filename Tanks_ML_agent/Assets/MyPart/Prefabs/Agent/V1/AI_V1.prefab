@@ -9987,7 +9987,6 @@ MonoBehaviour:
   tankTurretData: {fileID: 11400000, guid: 0ba31c5a09e698a41a0a62ca531a0226, type: 2}
   canFire: 0
   Turret: {fileID: 3737010283715435872}
-  FireManual: 0
 --- !u!82 &7057205048444133791
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9998,11 +9997,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 4932ab25b84dd7649b80af68a9660ddc, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

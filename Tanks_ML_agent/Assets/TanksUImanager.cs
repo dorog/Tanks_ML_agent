@@ -19,6 +19,12 @@ public class TanksUImanager : MonoBehaviour
     private int playerScore = 0;
     private int aiScore = 0;
 
+    public int maxScore = 5;
+    public GameObject gameOver;
+
+    public GameObject game;
+    public GameObject mainMenu;
+
     public void Count(int last)
     {
         number = last;
@@ -60,17 +66,45 @@ public class TanksUImanager : MonoBehaviour
 
     private void SetScore(int playerScore, int aiScore, string result)
     {
+        if (maxScore == playerScore || maxScore == aiScore)
+        {
+            gameOver.SetActive(true);
+        }
+        else
+        {
+            Invoke("NewRound", 3);
+        }
+
         resultText.text = result;
         playerScoreText.text = "" + playerScore;
         aiScoreText.text = "" + aiScore;
         scoreUI.SetActive(true);
-
-        Invoke("NewRound", 3);
     }
 
     private void NewRound()
     {
         scoreUI.SetActive(false);
         battleManager.StartRound();
+    }
+
+    public void StartNewGame()
+    {
+        gameOver.SetActive(false);
+        scoreUI.SetActive(false);
+        playerScore = 0;
+        aiScore = 0;
+
+        battleManager.StartRound();
+    }
+
+    public void GameOver()
+    {
+        playerScore = 0;
+        aiScore = 0;
+
+        gameOver.SetActive(false);
+        scoreUI.SetActive(false);
+        mainMenu.SetActive(true);
+        game.SetActive(false);
     }
 }

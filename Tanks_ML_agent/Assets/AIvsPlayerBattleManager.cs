@@ -134,6 +134,7 @@ public class AIvsPlayerBattleManager : TankBattleArenaManager
             }
             else
             {
+                DisablePlayer();
                 uiManager.PlayerWin();
             }
         }
@@ -145,5 +146,13 @@ public class AIvsPlayerBattleManager : TankBattleArenaManager
         tankMovementAgent.enabled = false;
         TankShooterAgent tankShooterAgent = tanks[0].GetComponentInChildren<TankShooterAgent>();
         tankShooterAgent.enabled = false;
+    }
+
+    private void DisablePlayer()
+    {
+        PlayerMovementController playerMovementController = player.GetComponent<PlayerMovementController>();
+        playerMovementController.enabled = false;
+        PlayerTurretController playerTurretController = player.GetComponent<PlayerTurretController>();
+        playerTurretController.enabled = false;
     }
 }
