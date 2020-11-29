@@ -46,6 +46,10 @@ public class TankShooting : MonoBehaviour
 
             Invoke("ReloadIsReady", tankTurretData.reloadTime);
         }
+        else if(agent)
+        {
+            shoter.AddReward(-0.1f);
+        }
     }
 
     private void ReloadIsReady()

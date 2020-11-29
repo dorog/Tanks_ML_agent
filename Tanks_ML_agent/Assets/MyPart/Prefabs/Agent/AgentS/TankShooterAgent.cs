@@ -1,5 +1,4 @@
 ﻿using MLAgents;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TankShooterAgent : Agent
@@ -14,11 +13,16 @@ public class TankShooterAgent : Agent
     public GameObject turret;
     public float range = 30f;
 
+    public LayerMask tankMask;
+    public LayerMask layer;
+    public GameObject tankGameObject;
+
     public override void CollectObservations()
     {
         AddVectorObs(tankShooting.CanFire());
 
-        AddVectorObs(battleArenaManager.GetDataForShoot(turret, target));
+        //AddVectorObs(battleArenaManager.GetDataForShoot(turret, target));
+        AddVectorObs(battleArenaManager.GetDataForShootV2(turret, target));
 
         string[] detectable = { search + "Tank", "Environment" };
         AddVectorObs(turretRayPerception.Perceive(range, new float[] { 90f }, detectable));
@@ -34,6 +38,7 @@ public class TankShooterAgent : Agent
     private void Reward(bool fire)
     {
         AddReward(-.001f);
+
         /*string[] detectable = { search };
         List<float> results = turretRayPerception.Perceive(range, new float[] { 90f }, detectable);*/
 
@@ -51,6 +56,22 @@ public class TankShooterAgent : Agent
                 AddReward(-.001f);
             }
         }*/
+
+        RaycastHit hit;
+        if (Physics.Raycast(turret.transform.position, turret.transform.forward, out hit, 35f, layer))
+        {
+
+            Collider[] colliders = Physics.OverlapSphere(hit.transform.position, 5, tankMask);
+            for(int i = 0; i < colliders.Length; i++)
+            {
+                if(colliders[i].gameObject == tankGameObject)
+                {
+                    AddReward(-1f);
+                }
+            }
+        }
+
+
     }
 
     private void RotateTurret(float amount)

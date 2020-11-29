@@ -119,7 +119,7 @@ public class TankMovement : MonoBehaviour
         Vector3 movement = transform.forward * m_MovementInputValue * tankMovementSettings.Speed * Time.fixedDeltaTime;
 
         // Apply this movement to the rigidbody's position.
-        velocity = movement.normalized;
+        velocity = movement;
         m_Rigidbody.MovePosition(m_Rigidbody.position + movement);
 
         m_MovementInputValue = 0;

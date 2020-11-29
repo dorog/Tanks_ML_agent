@@ -11,6 +11,8 @@ public abstract class TankBattleArenaManager : MonoBehaviour
 
     protected List<GameObject> tanks = new List<GameObject>();
 
+    public LayerMask layer;
+
     private void Start()
     {
         StartNewRound();
@@ -72,18 +74,18 @@ public abstract class TankBattleArenaManager : MonoBehaviour
         }
     }
 
-    public List<float> GetDataForShoot(GameObject tank, GameObject target)
+    public List<float> GetDataForShoot(GameObject turret, GameObject target)
     {
         List<float> data = new List<float>();
 
         try
         {
-            Vector3 vectorToTank = target.transform.position - tank.transform.position;
+            Vector3 vectorToTank = target.transform.position - turret.transform.position;
 
             float distance = vectorToTank.magnitude;
             data.Add(distance);
 
-            float angle = Vector3.SignedAngle(vectorToTank, tank.transform.forward, Vector3.up);
+            float angle = Vector3.SignedAngle(vectorToTank, turret.transform.forward, Vector3.up);
             data.Add(angle);
 
             TankMovement targetTankMovement = target.GetComponent<TankMovement>();
@@ -99,6 +101,94 @@ public abstract class TankBattleArenaManager : MonoBehaviour
             data.Add(0);
             data.Add(0);
             data.Add(0);
+            data.Add(0);
+            data.Add(0);
+        }
+
+        return data;
+    }
+
+    public List<float> GetDataForShootV2(GameObject turret, GameObject target)
+    {
+        List<float> data = new List<float>();
+
+        try
+        {
+            Vector3 vectorToTank = target.transform.position - turret.transform.position;
+
+            /*float distance = vectorToTank.magnitude;
+            data.Add(distance);*/
+            data.Add(target.transform.position.x);
+            data.Add(target.transform.position.z);
+
+            TankMovement targetTankMovement = target.GetComponent<TankMovement>();
+            Vector3 targetVelocity = targetTankMovement.GetVelocity();
+            data.Add(targetVelocity.x);
+            data.Add(targetVelocity.z);
+
+            //float angle = Vector3.SignedAngle(vectorToTank, turret.transform.forward, Vector3.up);
+            //data.Add(angle);
+
+            data.Add(turret.transform.position.x);
+            data.Add(turret.transform.position.z);
+
+            data.Add(turret.transform.forward.x);
+            data.Add(turret.transform.forward.z);
+
+            //Movement speed change it to ask
+            //data.Add(12f);
+            //data.Add(90f);
+        }
+        catch (Exception)
+        {
+            data.Add(0);
+            data.Add(0);
+            data.Add(0);
+            data.Add(0);
+            data.Add(0);
+            data.Add(0);
+            data.Add(0);
+            data.Add(0);
+            data.Add(0);
+            data.Add(0);
+            data.Add(0);
+            data.Add(0);
+            data.Add(0);
+        }
+
+        return data;
+    }
+
+    public List<float> GetDataForPredictShoot(GameObject turret, GameObject target)
+    {
+        List<float> data = new List<float>();
+
+        try
+        {
+            TankMovement targetTankMovement = target.GetComponent<TankMovement>();
+            Vector3 targetVelocity = targetTankMovement.GetVelocity();
+
+            Vector3 predictTargetPosition = target.transform.position + targetVelocity;
+
+            data.Add(predictTargetPosition.x);
+            data.Add(predictTargetPosition.y);
+
+            RaycastHit hit;
+            if (Physics.Raycast(turret.transform.position, turret.transform.forward, out hit, 35f, layer))
+            {
+                if (hit.collider.gameObject.tag == "Tank")
+                {
+                    //AddReward(1f);
+                }
+                else
+                {
+
+                }
+            }
+
+        }
+        catch (Exception)
+        {
             data.Add(0);
             data.Add(0);
         }

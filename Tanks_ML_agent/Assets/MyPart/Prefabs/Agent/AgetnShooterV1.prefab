@@ -399,7 +399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    vectorObservationSize: 10
+    vectorObservationSize: 14
     numStackedVectorObservations: 4
     vectorActionSize: 02000000
     vectorActionDescriptions: []
@@ -433,6 +433,13 @@ MonoBehaviour:
   search: Tank
   turret: {fileID: 3579758254241892166}
   range: 30
+  tankMask:
+    serializedVersion: 2
+    m_Bits: 256
+  layer:
+    serializedVersion: 2
+    m_Bits: 2304
+  tankGameObject: {fileID: 3579758254241910362}
 --- !u!1 &3579758254241899616
 GameObject:
   m_ObjectHideFlags: 0
@@ -767,8 +774,8 @@ MonoBehaviour:
   m_ChargingClip: {fileID: 8300000, guid: c17f124fcdc0f5446a72f793898bd74b, type: 3}
   m_FireClip: {fileID: 8300000, guid: 672a9941361ad494a99fba36759eca80, type: 3}
   tankTurretData: {fileID: 11400000, guid: 0ba31c5a09e698a41a0a62ca531a0226, type: 2}
+  canFire: 1
   Turret: {fileID: 3579758254241720136}
-  FireManual: 0
 --- !u!82 &7170125048325708727
 AudioSource:
   m_ObjectHideFlags: 0

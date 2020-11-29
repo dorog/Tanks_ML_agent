@@ -3537,6 +3537,9 @@ MonoBehaviour:
   - {fileID: 2100000, guid: b0da1813c36914e678ba57f2790424e1, type: 2}
   Places:
   - {fileID: 1540963580}
+  layer:
+    serializedVersion: 2
+    m_Bits: 0
   target: {fileID: 7760225491702574, guid: c49346bb292a7c7499ed4af074f9caf3, type: 3}
   shooterTank: {fileID: 3579758254241910362, guid: 06d63b5ec7247434aa985bce44490993,
     type: 3}
@@ -3894,6 +3897,9 @@ MonoBehaviour:
   - {fileID: 2100000, guid: b0da1813c36914e678ba57f2790424e1, type: 2}
   Places:
   - {fileID: 463601874}
+  layer:
+    serializedVersion: 2
+    m_Bits: 0
   target: {fileID: 7760225491702574, guid: c49346bb292a7c7499ed4af074f9caf3, type: 3}
   shooterTank: {fileID: 3579758254241910362, guid: 06d63b5ec7247434aa985bce44490993,
     type: 3}
@@ -4387,6 +4393,9 @@ MonoBehaviour:
   - {fileID: 2100000, guid: b0da1813c36914e678ba57f2790424e1, type: 2}
   Places:
   - {fileID: 118753058}
+  layer:
+    serializedVersion: 2
+    m_Bits: 0
   target: {fileID: 7760225491702574, guid: c49346bb292a7c7499ed4af074f9caf3, type: 3}
   shooterTank: {fileID: 3579758254241910362, guid: 06d63b5ec7247434aa985bce44490993,
     type: 3}
@@ -5406,6 +5415,9 @@ MonoBehaviour:
   - {fileID: 2100000, guid: b0da1813c36914e678ba57f2790424e1, type: 2}
   Places:
   - {fileID: 50995790}
+  layer:
+    serializedVersion: 2
+    m_Bits: 0
   target: {fileID: 7760225491702574, guid: c49346bb292a7c7499ed4af074f9caf3, type: 3}
   shooterTank: {fileID: 3579758254241910362, guid: 06d63b5ec7247434aa985bce44490993,
     type: 3}
@@ -5837,6 +5849,9 @@ MonoBehaviour:
   - {fileID: 2100000, guid: b0da1813c36914e678ba57f2790424e1, type: 2}
   Places:
   - {fileID: 2106267432}
+  layer:
+    serializedVersion: 2
+    m_Bits: 0
   target: {fileID: 7760225491702574, guid: c49346bb292a7c7499ed4af074f9caf3, type: 3}
   shooterTank: {fileID: 3579758254241910362, guid: 06d63b5ec7247434aa985bce44490993,
     type: 3}
@@ -8292,6 +8307,9 @@ MonoBehaviour:
   - {fileID: 2100000, guid: b0da1813c36914e678ba57f2790424e1, type: 2}
   Places:
   - {fileID: 1905254505}
+  layer:
+    serializedVersion: 2
+    m_Bits: 0
   target: {fileID: 7760225491702574, guid: c49346bb292a7c7499ed4af074f9caf3, type: 3}
   shooterTank: {fileID: 3579758254241910362, guid: 06d63b5ec7247434aa985bce44490993,
     type: 3}
@@ -10136,6 +10154,9 @@ MonoBehaviour:
   - {fileID: 2100000, guid: b0da1813c36914e678ba57f2790424e1, type: 2}
   Places:
   - {fileID: 2005864219}
+  layer:
+    serializedVersion: 2
+    m_Bits: 0
   target: {fileID: 7760225491702574, guid: c49346bb292a7c7499ed4af074f9caf3, type: 3}
   shooterTank: {fileID: 3579758254241910362, guid: 06d63b5ec7247434aa985bce44490993,
     type: 3}
@@ -15296,6 +15317,9 @@ MonoBehaviour:
   - {fileID: 2100000, guid: b0da1813c36914e678ba57f2790424e1, type: 2}
   Places:
   - {fileID: 2128391198}
+  layer:
+    serializedVersion: 2
+    m_Bits: 0
   target: {fileID: 7760225491702574, guid: c49346bb292a7c7499ed4af074f9caf3, type: 3}
   shooterTank: {fileID: 3579758254241910362, guid: 06d63b5ec7247434aa985bce44490993,
     type: 3}
@@ -15525,6 +15549,9 @@ MonoBehaviour:
   - {fileID: 2100000, guid: b0da1813c36914e678ba57f2790424e1, type: 2}
   Places:
   - {fileID: 1598460188}
+  layer:
+    serializedVersion: 2
+    m_Bits: 0
   target: {fileID: 7760225491702574, guid: c49346bb292a7c7499ed4af074f9caf3, type: 3}
   shooterTank: {fileID: 3579758254241910362, guid: 06d63b5ec7247434aa985bce44490993,
     type: 3}
@@ -15806,6 +15833,9 @@ MonoBehaviour:
   - {fileID: 2100000, guid: b0da1813c36914e678ba57f2790424e1, type: 2}
   Places:
   - {fileID: 1158866021}
+  layer:
+    serializedVersion: 2
+    m_Bits: 0
   target: {fileID: 7760225491702574, guid: c49346bb292a7c7499ed4af074f9caf3, type: 3}
   shooterTank: {fileID: 3579758254241910362, guid: 06d63b5ec7247434aa985bce44490993,
     type: 3}
@@ -16305,6 +16335,9 @@ MonoBehaviour:
   - {fileID: 2100000, guid: b0da1813c36914e678ba57f2790424e1, type: 2}
   Places:
   - {fileID: 718860733}
+  layer:
+    serializedVersion: 2
+    m_Bits: 2304
   target: {fileID: 7760225491702574, guid: c49346bb292a7c7499ed4af074f9caf3, type: 3}
   shooterTank: {fileID: 3579758254241910362, guid: 06d63b5ec7247434aa985bce44490993,
     type: 3}
@@ -17646,6 +17679,9 @@ MonoBehaviour:
   - {fileID: 2100000, guid: b0da1813c36914e678ba57f2790424e1, type: 2}
   Places:
   - {fileID: 996733587}
+  layer:
+    serializedVersion: 2
+    m_Bits: 0
   target: {fileID: 7760225491702574, guid: c49346bb292a7c7499ed4af074f9caf3, type: 3}
   shooterTank: {fileID: 3579758254241910362, guid: 06d63b5ec7247434aa985bce44490993,
     type: 3}
@@ -23977,6 +24013,9 @@ MonoBehaviour:
   - {fileID: 2100000, guid: b0da1813c36914e678ba57f2790424e1, type: 2}
   Places:
   - {fileID: 702332156}
+  layer:
+    serializedVersion: 2
+    m_Bits: 0
   target: {fileID: 7760225491702574, guid: c49346bb292a7c7499ed4af074f9caf3, type: 3}
   shooterTank: {fileID: 3579758254241910362, guid: 06d63b5ec7247434aa985bce44490993,
     type: 3}
@@ -24698,6 +24737,9 @@ MonoBehaviour:
   - {fileID: 2100000, guid: b0da1813c36914e678ba57f2790424e1, type: 2}
   Places:
   - {fileID: 147140853}
+  layer:
+    serializedVersion: 2
+    m_Bits: 0
   target: {fileID: 7760225491702574, guid: c49346bb292a7c7499ed4af074f9caf3, type: 3}
   shooterTank: {fileID: 3579758254241910362, guid: 06d63b5ec7247434aa985bce44490993,
     type: 3}
@@ -27807,6 +27849,9 @@ MonoBehaviour:
   - {fileID: 2100000, guid: b0da1813c36914e678ba57f2790424e1, type: 2}
   Places:
   - {fileID: 1198590118}
+  layer:
+    serializedVersion: 2
+    m_Bits: 0
   target: {fileID: 7760225491702574, guid: c49346bb292a7c7499ed4af074f9caf3, type: 3}
   shooterTank: {fileID: 3579758254241910362, guid: 06d63b5ec7247434aa985bce44490993,
     type: 3}
@@ -34982,6 +35027,9 @@ MonoBehaviour:
   - {fileID: 2100000, guid: b0da1813c36914e678ba57f2790424e1, type: 2}
   Places:
   - {fileID: 1168490514}
+  layer:
+    serializedVersion: 2
+    m_Bits: 0
   target: {fileID: 7760225491702574, guid: c49346bb292a7c7499ed4af074f9caf3, type: 3}
   shooterTank: {fileID: 3579758254241910362, guid: 06d63b5ec7247434aa985bce44490993,
     type: 3}

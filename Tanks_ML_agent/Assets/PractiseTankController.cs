@@ -11,10 +11,12 @@ public class PractiseTankController : MonoBehaviour
     private Vector3 position;
 
     public Rigidbody rigid;
+    public float percent;
 
     private void Start()
     {
         position = transform.position;
+        percent = Random.Range(0, 1f);
     }
 
     /*void Update()
@@ -38,7 +40,7 @@ public class PractiseTankController : MonoBehaviour
     private void FixedUpdate()
     {
         Check();
-        tankMovement.AddMovement(1 * direction);
+        tankMovement.AddMovement(percent/1 * direction);
         //DistanceCheck();
     }
 

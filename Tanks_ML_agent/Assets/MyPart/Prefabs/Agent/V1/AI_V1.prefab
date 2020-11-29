@@ -10775,12 +10775,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    vectorObservationSize: 10
+    vectorObservationSize: 13
     numStackedVectorObservations: 4
     vectorActionSize: 02000000
     vectorActionDescriptions: []
     vectorActionSpaceType: 1
-  m_Model: {fileID: 5022602860645237092, guid: 2fbc5a96d30242141962242ab1a91018, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: 72c9083f47e6bd142af83f83e6c5d586, type: 3}
   m_InferenceDevice: 1
   m_UseHeuristic: 0
   m_BehaviorName: TankShooting
@@ -10809,6 +10809,13 @@ MonoBehaviour:
   search: Tank
   turret: {fileID: 3737010283715165550}
   range: 30
+  tankMask:
+    serializedVersion: 2
+    m_Bits: 256
+  layer:
+    serializedVersion: 2
+    m_Bits: 2304
+  tankGameObject: {fileID: 3737010283715114098}
 --- !u!1 &6931533224129861315
 GameObject:
   m_ObjectHideFlags: 0
